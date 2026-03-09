@@ -8,6 +8,7 @@
 #include "Sword.h"
 #include "CurrencyItem.h"
 #include "GreatSword.h"
+#include "Axe.h"
 
 #define RAND_AMOUNT 7
 
@@ -27,7 +28,7 @@ GameEngine::GameEngine() {
             targetTile = gameMap.getTile(x, y);
         } while (targetTile == nullptr || !targetTile->isPassable());
 
-        int r = rand() % 7;
+        int r = rand() % 8;
         switch (r) {
         case 0: targetTile->addItem(make_unique<Sword>()); break;
         case 1: targetTile->addItem(make_unique<Coin>()); break;
@@ -36,6 +37,7 @@ GameEngine::GameEngine() {
         case 4: targetTile->addItem(make_unique<Key>()); break;
         case 5: targetTile->addItem(make_unique<Bone>()); break;
         case 6: targetTile->addItem(make_unique<Greatsword>()); break;
+        case 7: targetTile->addItem(make_unique<Axe>()); break;
         }
     }
 }

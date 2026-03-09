@@ -1,7 +1,8 @@
-#include "Map.h"
+﻿#include "Map.h"
 
-//Jesli odkomentowane -> zmiana kszta?tu planszy,
-// tylko trzeba jeszcze zmieni? domy?ln? pozycj? startow? Playera na (0,0)
+//Jesli odkomentowane -> zmiana kształtu planszy,
+// tylko trzeba jeszcze zmienić domyślną pozycję startową Playera z (1,1) na (0,0)
+
 
 Map::Map() : width(40), height(20) {
     grid.resize(height);
