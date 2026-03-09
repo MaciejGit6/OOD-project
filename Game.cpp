@@ -7,6 +7,7 @@ void Game::Run() {
     cout << "\033[2J\033[?25l";
 
     while (engine.isRunning()) {
+
         engine.drawFrame();
         engine.processUserInput();
     }

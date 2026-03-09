@@ -1,6 +1,8 @@
-#pragma once
+﻿#pragma once
 #include "Weapon.h"
 #include "Player.h"
+
+//Przykład itema dla którego potrzebne sa obie ręce 
 
 class Greatsword : public Weapon {
 public:
@@ -17,7 +19,7 @@ public:
             player.equipRight(nullptr);
         }
        
-        else {
+        else { //zajmuje obie ręce 
             player.equipLeft(this);
             player.equipRight(this);
         }

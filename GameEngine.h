@@ -18,6 +18,8 @@ public:
     GameEngine();
 
     bool isRunning() const;
+
     void drawFrame() const;
+
     void processUserInput();
 };

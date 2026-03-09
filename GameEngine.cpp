@@ -57,6 +57,7 @@ void GameEngine::processUserInput() {
     else if (input == 'd') targetX++;
     else if (input == 'q') {
         gameIsRunning = false;
+
         return;
     }
     else if (input == 'e') {
@@ -68,6 +69,7 @@ void GameEngine::processUserInput() {
             groundItems.pop_back();
 
             bool shouldDestroy = item->onPickup(player);
+
             if (!shouldDestroy) {
                 player.addToInventory(std::move(item));
             }

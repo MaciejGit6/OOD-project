@@ -10,11 +10,11 @@ using namespace std;
 
 
 #ifdef _WIN32
-#include <conio.h> //windows built in function _getchar()
+#include <conio.h> //windows ma gotową funkcję
 #else
 #include <termios.h> 
 #include <unistd.h>
-//Defining for non-windows
+//jeśli jestesmy poza windowsem, definiuje funkcje o tej samej nazwie 
 int _getch() {
     struct termios originalSettings, newSettings;
     int characterPressed;
