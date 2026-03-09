@@ -11,7 +11,6 @@ void Player::moveUp() { y--; }
 void Player::moveDown() { y++; }
 void Player::moveLeft() { x--; }
 void Player::moveRight() { x++; }
-
 int Player::getX() const { return x; }
 int Player::getY() const { return y; }
 
@@ -19,12 +18,14 @@ void Player::equipLeft(Item* item) { leftHand = item; }
 void Player::equipRight(Item* item) { rightHand = item; }
 void Player::clearHands() { leftHand = nullptr; rightHand = nullptr; }
 
-void Player::addToInventory(Item* item) { inventory.push_back(item); }
+void Player::addToInventory(std::unique_ptr<Item> item) {
+    inventory.push_back(std::move(item));
+}
 void Player::addGold(int amount) { gold += amount; }
 void Player::addCoins(int amount) { coins += amount; }
 
 int Player::getGold() const { return gold; }
 int Player::getCoins() const { return coins; }
-const std::vector<Item*>& Player::getInventory() const { return inventory; }
+const std::vector<std::unique_ptr<Item>>& Player::getInventory() const { return inventory; }
 Item* Player::getLeftHand() const { return leftHand; }
 Item* Player::getRightHand() const { return rightHand; }

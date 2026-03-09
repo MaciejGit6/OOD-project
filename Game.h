@@ -1,11 +1,9 @@
-#include <iostream>
+#pragma once
 #include "GameEngine.h"
 
-using namespace std;
-
 class Game {
+private:
     GameEngine engine;
 public:
     void Run();
 };
-

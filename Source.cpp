@@ -1,10 +1,11 @@
-﻿#include "Game.h"
+﻿#include <windows.h>
+#include "Game.h"
 
 int main() {
-    
-    Game g;
-    g.Run();
+    SetConsoleOutputCP(CP_UTF8);
 
+    Game myGame;
+    myGame.Run();
 
     return 0;
 }

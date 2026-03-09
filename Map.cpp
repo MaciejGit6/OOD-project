@@ -5,45 +5,29 @@ Map::Map() : width(40), height(20) {
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-
-            
-            // 2. Draw walls on ALL FOUR edges everywhere else!
-            if (x == 0 || x == width -1 || y == 0 || y == height -1) {
-                grid[y].push_back(new WallTile());
+            /*if ((x == 0 && y == 0) || (x == 1 && y == 0) || (x == 0 && y == 1)) {
+                grid[y].push_back(std::make_unique<FloorTile>());
+            }*/
+            /*else */if (x == 0 || x == width - 1 || y == 0 || y == height - 1) {
+                grid[y].push_back(std::make_unique<WallTile>());
             }
-            // 3. The rest of the inside is floor
+            /*else if (x >= 10 && x <= 15 && y == 5) {
+                grid[y].push_back(std::make_unique<WallTile>());
+            }*/
             else {
-                grid[y].push_back(new FloorTile());
+                grid[y].push_back(std::make_unique<FloorTile>());
             }
         }
     }
 }
-
-
-Map::~Map() {
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            
-            std::vector<Item*>& floorItems = grid[y][x]->getItems();
-            for (Item* item : floorItems) {
-                delete item;
-            }
-
-          
-            delete grid[y][x];
-        }
-    }
-}
-
 
 bool Map::isValidCoordinate(int x, int y) const {
     return (x >= 0 && x < width && y >= 0 && y < height);
 }
 
-
 Tile* Map::getTile(int x, int y) const {
     if (isValidCoordinate(x, y)) {
-        return grid[y][x]; // Y is the row, X is the column
+        return grid[y][x].get();
     }
-    return nullptr; // Safety fallback
+    return nullptr;
 }

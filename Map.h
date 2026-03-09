@@ -1,16 +1,17 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "Tile.h"
 
 class Map {
 private:
     int width;
     int height;
-    std::vector<std::vector<Tile*>> grid;
+    std::vector<std::vector<std::unique_ptr<Tile>>> grid;
 
 public:
     Map();
-    ~Map(); // Crucial: You must loop through and delete all Tile* to prevent memory leaks!
+    ~Map() = default;
 
     Tile* getTile(int x, int y) const;
     bool isValidCoordinate(int x, int y) const;

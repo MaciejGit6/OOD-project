@@ -4,21 +4,20 @@
 
 class Sword : public Weapon {
 public:
-    // Call the Weapon constructor to set the damage to 15
     Sword() : Weapon(15) {}
 
-    char getSymbol() const override {
-        return '/'; // A slash makes a nice simple sword symbol
-    }
+    std::string getSymbol() const override { return "/"; }
+    std::string getName() const override { return "Iron Sword"; }
 
-    std::string getName() const override {
-        return "Iron Sword";
-    }
-
-    // The "Tell, Don't Ask" interaction
     void onEquip(Player& player) override {
-        // A one-handed weapon simply tells the player to hold it in one hand.
-        // It doesn't need to ask the player for permission or check types!
-        player.equipRight(this);
+        if (player.getRightHand() == this) {
+            player.equipRight(nullptr);
+        }
+        else {
+            player.equipRight(this);
+            if (player.getLeftHand() == this) {
+                player.equipLeft(nullptr);
+            }
+        }
     }
 };

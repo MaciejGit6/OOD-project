@@ -1,15 +1,14 @@
 #pragma once
 #include "Item.h"
-#include "Player.h" 
+#include "Player.h"
 
 class Coin : public Item {
 public:
     bool onPickup(Player& player) override {
         player.addCoins(1);
-        return true; 
+        return true;
     }
-
-    char getSymbol() const override { return 'c'; }
+    std::string getSymbol() const override { return "c"; }
     std::string getName() const override { return "Coin"; }
 };
 
@@ -19,7 +18,6 @@ public:
         player.addGold(1);
         return true;
     }
-
-    char getSymbol() const override { return 'g'; }
+    std::string getSymbol() const override { return "g"; }
     std::string getName() const override { return "Gold Chunk"; }
 };
