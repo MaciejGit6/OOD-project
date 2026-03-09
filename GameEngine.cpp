@@ -1,4 +1,4 @@
-#include "GameEngine.h"
+﻿#include "GameEngine.h"
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -10,6 +10,7 @@
 #include "GreatSword.h"
 #include "Axe.h"
 
+//poniższa wartosc okresla ile losowych przedmiotow dajemy na planszę
 #define RAND_AMOUNT 7
 
 using namespace std;
@@ -18,16 +19,21 @@ GameEngine::GameEngine() {
     gameIsRunning = true;
     srand(time(0));
 
+    //tworzenie randomowych przedmiotow
     for (int i = 0; i < RAND_AMOUNT; i++) {
         int x, y;
         Tile* targetTile = nullptr;
 
+
+        //losowe koordynaty
         do {
             x = rand() % gameMap.getWidth();
             y = rand() % gameMap.getHeight();
             targetTile = gameMap.getTile(x, y);
         } while (targetTile == nullptr || !targetTile->isPassable());
 
+
+        //losowy typ
         int r = rand() % 8;
         switch (r) {
         case 0: targetTile->addItem(make_unique<Sword>()); break;

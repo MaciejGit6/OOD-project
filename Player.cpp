@@ -25,6 +25,7 @@ void Player::addGold(int amount) { gold += amount; }
 void Player::addCoins(int amount) { coins += amount; }
 
 int Player::getGold() const { return gold; }
+
 int Player::getCoins() const { return coins; }
 const std::vector<std::unique_ptr<Item>>& Player::getInventory() const { return inventory; }
 Item* Player::getLeftHand() const { return leftHand; }

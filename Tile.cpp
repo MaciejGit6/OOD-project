@@ -13,9 +13,12 @@ bool FloorTile::isPassable() const {
 }
 
 std::string FloorTile::getSymbol() const {
+    //jeśli cos jest
     if (!itemsOnGround.empty()) {
         return itemsOnGround.back()->getSymbol();
     }
+
+    //puste
     return " ";
 }
 

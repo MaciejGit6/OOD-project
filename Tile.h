@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <vector>
 #include <string>
 #include <memory>
@@ -6,10 +6,11 @@
 
 class Tile {
 protected:
+    //dziedziczona lista przedmiotow na danej płytce
     std::vector<std::unique_ptr<Item>> itemsOnGround;
 
 public:
-    virtual ~Tile() = default;
+    virtual ~Tile() = default; 
     virtual bool isPassable() const = 0;
     virtual std::string getSymbol() const = 0;
 
@@ -17,6 +18,8 @@ public:
     std::vector<std::unique_ptr<Item>>& getItems();
 };
 
+
+//subklasy----------------------------------------
 class FloorTile : public Tile {
 public:
     bool isPassable() const override;
